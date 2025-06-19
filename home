@@ -1,0 +1,405 @@
+SEPARE POR PASTAS 
+
+<!DOCTYPE html>
+<!-- Define o documento como HTML5 -->
+<html lang="pt-br">
+<!-- Define o idioma da página como Português do Brasil -->
+<head>
+    <!-- Agrupa os metadados da página -->
+    <meta charset="UTF-8">
+    <!-- Define o conjunto de caracteres como UTF-8 para suportar acentuação -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Configura a janela de visualização para um design responsivo -->
+    <title>Meu Portfólio Pessoal</title>
+    <!-- Título exibido na aba do navegador -->
+
+    <!-- Importa fontes do Fonts para um visual mais elegante -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Estilos CSS internos da página -->
+    <style>
+        /* ==== Reset de CSS e Estilos Globais com Nova Estética ==== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; 
+        }
+
+        /* Estilos aplicados ao corpo da página */
+        body {
+            font-family: 'Roboto', sans-serif; /* Fonte mais limpa para o texto principal */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Fundo com gradiente suave */
+            color: #495057;
+            line-height: 1.7;
+            overflow-x: hidden; /* Previne a rolagem horizontal */
+        }
+
+        /* ==== Cabeçalho e Navegação com Estilo Moderno ==== */
+        header {
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+            backdrop-filter: blur(10px); /* Efeito de vidro fosco no menu */
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        /* Container da navegação */
+        nav {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Lista de links da navegação */
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Links da navegação */
+        nav a {
+            color: #343a40; /* Cor do texto mais escura para melhor contraste */
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif; /* Fonte de destaque para o menu */
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        /* Adiciona uma linha animada sob o link ao passar o mouse */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #007bff; 
+        }
+        
+        nav a:hover::after {
+            width: 70%;
+        }
+        
+        /* ==== Conteúdo Principal e Seções com Animação ==== */
+        main {
+            padding-top: 100px; 
+        }
+        
+        /* Estilo padrão para todas as seções */
+        section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            opacity: 0; /* Inicia transparente para a animação */
+            transform: translateY(30px); /* Inicia deslocada para a animação */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        /* Classe para ativar a animação quando a seção estiver visível */
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estilo para os títulos */
+        h1, h2, h3 {
+             font-family: 'Poppins', sans-serif; /* Fonte de destaque para todos os títulos */
+             color: #343a40;
+             margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* ==== Estilos de Elementos Específicos ==== */
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            border: 6px solid #fff;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+        
+        #sobre {
+            text-align: center;
+        }
+
+        /* ==== Formulário de Contato Moderno ==== */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            padding: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            width: 100%;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+        }
+
+        button[type="submit"] {
+            background: #007bff; 
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* ==== Portfólio com Efeitos Visuais ==== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden; /* Garante que a imagem não ultrapasse as bordas arredondadas */
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+        }
+        
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .portfolio-content {
+            padding: 25px;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        /* ==== Rodapé ==== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho com o menu de navegação -->
+    <header>
+        <nav>
+            <ul>
+                <!-- Links internos que levam para as seções da página -->
+                <li><a href="#sobre">Sobre Mim</a></li>
+                <li><a href="#objetivo">Objetivo</a></li>
+                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal da página -->
+    <main>
+
+        <!-- Seção Sobre Mim -->
+        <section id="sobre">
+            <img src="uploaded:9b1cc68033f7e4e8cd7b55ebae7193d4.jpg-914ed4fc-05ae-4626-8c26-46878eddce2a" alt="Foto de Perfil de [Seu Nome]" class="profile-pic">
+            <h1>Sobre Mim</h1>
+            <p>Olá! Meu nome é <strong>[RAFAEL FERREIRA VERISSIMO]</strong> e sou um entusiasta de tecnologia e futuro desenvolvedor. Atualmente, estou focado em aprimorar minhas habilidades em desenvolvimento web, explorando as maravilhas do HTML, CSS e JavaScript.</p>
+            <p>Fora do mundo dos códigos, meus hobbies incluem ler ficção científica, praticar trekking em trilhas locais e experimentar novas receitas na cozinha. Acredito que a criatividade e a resolução de problemas são habilidades que conectam todas as minhas paixões.</p>
+        </section>
+
+        <!-- Seção de Objetivo Profissional -->
+        <section id="objetivo">
+            <h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bullseye" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10m0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12"/><path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8"/><path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/></svg>
+                Objetivo Profissional
+            </h1>
+            <p>Busco uma oportunidade de estágio ou posição júnior na área de desenvolvimento de software, com foco em front-end. Meu objetivo é aplicar meus conhecimentos em HTML, CSS e JavaScript para criar interfaces de usuário intuitivas e responsivas, contribuindo para projetos inovadores e aprendendo com uma equipe experiente.</p>
+        </section>
+
+        <!-- Seção de Formação -->
+        <section id="formacao">
+            <h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-mortarboard-fill" viewBox="0 0 16 16"><path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0l7.5-3a.5.5 0 0 0 .025-.917z"/><path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zM8 5.466 1.758 3 8 .534 14.242 3z"/></svg>
+                Formação e Idiomas
+            </h1>
+            <h2>Formação Acadêmica</h2>
+            <p><strong>Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas</strong><br>
+            UNINTER - Centro Universitário Internacional<br>
+            Conclusão Prevista: 2027 </p>
+            
+            <h2>Idiomas</h2>
+            <p><strong>Português:</strong> Nativo</p>
+            <p><strong>Inglês:</strong> Nível Intermediário</p>
+        </section>
+
+        <!-- Seção de Portfólio -->
+        <section id="portfolio">
+            <h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-briefcase-fill" viewBox="0 0 16 16"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3h6v-.5A1.5 1.5 0 0 0 9.5 1z"/><path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5v.384l-7.614 2.03a1.5 1.5 0 0 1-.772 0L0 4.884zM1.5 4h13a.5.5 0 0 1 .5.5v1.616l-2.121.565a.5.5 0 0 1-.168.021l-1.108-.03a.5.5 0 0 1-.45-.292L8 4.256zM16 8.5v5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-5l6.614 1.764a1.5 1.5 0 0 0 .772 0z"/></svg>
+                Portfólio
+            </h1>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/400x250/2c3e50/ffffff?text=Projeto+1" alt="Imagem do Projeto Calculadora" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <h3>Calculadora Web</h3>
+                        <p>Uma calculadora funcional criada com HTML, CSS e JavaScript puro, capaz de realizar as quatro operações básicas.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/400x250/007bff/ffffff?text=Projeto+2" alt="Imagem do Projeto Página de Captura" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <h3>Página de Captura</h3>
+                        <p>Uma landing page responsiva desenvolvida para um curso fictício, com foco em design limpo e conversão.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/400x250/28a745/ffffff?text=Projeto+3" alt="Imagem do Projeto Blog Simples" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <h3>Blog Simples</h3>
+                        <p>Estrutura de um blog utilizando apenas HTML e CSS, com foco na semântica e na estilização de artigos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato com formulário -->
+        <section id="contato">
+            <h1>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></svg>
+                Contato
+            </h1>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Seu Melhor E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" required></textarea>
+                </div>
+                <button type="submit">Enviar Mensagem</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Rodapé da página -->
+    <footer>
+        <p>&copy; 2025 - Desenvolvido por [RAFAEL FERREIRA VERISSIMO RU 5000980].</p>
+    </footer>
+
+    <!-- Script para ativar a animação de scroll -->
+    <script>
+        const sections = document.querySelectorAll('section');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // A animação começa quando 10% da seção estiver visível
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
